@@ -87,3 +87,10 @@
   margin: 0;
   padding: 0;
 }
+
+#successText {
+    position: absolute;
+    left: 800px;
+    top: 450px;
+    font-size: 50px;
+}

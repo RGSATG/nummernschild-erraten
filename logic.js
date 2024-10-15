@@ -41,37 +41,52 @@ const bezirkListe = [
     },
     {
         short: "SD",
-        long: "Rohrbach",
+        long: "Schärding",
     },
     {
         short: "SE",
-        long: "Rohrbach",
+        long: "Steyr/Land",
     },
     {
         short: "SR",
-        long: "Rohrbach",
+        long: "Steyr",
     },
     {
         short: "UU",
-        long: "Rohrbach",
+        long: "Urfahr Umgebung",
     },
     {
         short: "VB",
-        long: "Rohrbach",
+        long: "Vöcklabruch",
     },
     {
         short: "WE",
-        long: "Rohrbach",
+        long: "Wels",
     },
     {
         short: "WL",
-        long: "Rohrbach",
+        long: "Wels/Land",
     }
 ]
 let plateNumbers = document.querySelector("#plateAlphanumeric");
 let plateGeneratorBtn = document.querySelector("#plateGeneratorBtn");
+let submitBtn = document.querySelector("#submitBtn");
+let bezirkInput = document.querySelector("#bezirkInput");
+let successText = document.querySelector("#successText"); 
+let currentIndex;
 
-plateGeneratorBtn.addEventListener("click", () => plateNumbers.textContent = `${bezirkListe[Math.floor(Math.random() * 17)].short} 1A34C`);
+plateGeneratorBtn.addEventListener("click", () => {
+    currentIndex = Math.floor(Math.random() * 17);
+    plateNumbers.textContent = `${bezirkListe[currentIndex].short} 1A34C`
+});
 
-
+submitBtn.addEventListener("click", () => {
+    if(bezirkListe[currentIndex].long === bezirkInput.value) {
+        successText.textContent = "Richtig!"
+        successText.style.color = "green";
+    } else {
+        successText.textContent = "Falsch...." 
+        successText.style.color = "red";
+    }
+});
 
